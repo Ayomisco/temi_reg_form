@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from user_form.views import user_form, success
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', user_form, name='user_form'),
+    path('success/', success, name='success'),
 ]
+
+
+admin.site.site_header = "Admin Dashboard"
+admin.site.site_title = "Browse Form Submission"
+admin.site.index_title = "Welcome to the Admin Area "
